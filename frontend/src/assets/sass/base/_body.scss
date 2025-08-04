@@ -1,0 +1,26 @@
+@use '../utils/variables' as v;
+@use '../utils/mixins';
+
+body {
+    font-family: Amiri;
+    #root {
+        .home-layout-display {
+            display: grid;
+            grid-template-rows: 1fr 80px;
+            min-height: 100vh;
+
+            main {
+                background-color: v.$lightyellow;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+        }
+
+        .default-layout-display {
+            display: grid;
+            grid-template-rows: 65px 1fr 80px;
+            min-height: 100vh;
+        }
+    }
+}

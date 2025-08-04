@@ -1,0 +1,14 @@
+@use '../utils/variables' as v;
+@use '../utils/mixins';
+
+footer {
+    background-color: v.$offwith;
+    display: flex;
+    justify-content: center;
+    border-top: 2px solid v.$lightgrey;
+    padding: 32px 0px;
+
+    p {
+        color: v.$green;
+    }
+}
