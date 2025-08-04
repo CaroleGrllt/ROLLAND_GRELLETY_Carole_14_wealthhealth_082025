@@ -7,7 +7,7 @@ export default function Header() {
     return (
         <header>
             <nav>
-                <Link to='/'>
+                <Link to='/' className="nav-logo">
                     <img src={Logo} alt="Wealth Health Logo" />
                     <h1 className='sr-only'>Wealth Health</h1>
                 </Link>
@@ -18,12 +18,14 @@ export default function Header() {
                             Home
                         </Link>
                     </li>
+                    |
                     <li>
                         <Link className='main-nav-item' to='/new-employee'>
                             <FontAwesomeIcon icon={faUserPlus} className='user-plus' />
                             Create new employee
                         </Link>
                     </li>
+                    |
                     <li>
                         <Link className='main-nav-item' to='/list-employees'>
                             <FontAwesomeIcon icon={faAddressBook} className='address-book' />

@@ -4,8 +4,8 @@
 @use './layout/header';
 @use './layout/footer';
 @use './pages/home';
-@use './pages/creation';
-@use './pages/view';
+@use './pages/new';
+@use './pages/list';
 @use './pages/error';
 @use './components/button';
 @use './utils/mixins';

@@ -1,0 +1,48 @@
+@use '../utils/variables' as v;
+@use '../utils/mixins';
+
+header {
+    background-color: v.$offwith;
+    border-bottom: 2px solid v.$lightgrey;
+
+    nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 10px 100px 0;
+
+        
+        a {
+            color: v.$green;
+            text-decoration: none;
+            margin-right: 0.5rem; 
+            
+            &:hover {
+               text-decoration: underline; 
+               font-weight: 700;
+               color: v.$darkgreen;
+            }
+        }
+
+        .nav-logo {
+            img {
+                width: 80px;
+            }
+        }
+
+        ul {
+            display: flex;
+            gap: 15px;
+            color: v.$green;
+            
+            li {
+                a {
+                    display: flex;
+                    gap: 5px;
+                    font-size: 18px;
+                }
+            }
+        }
+    }
+}
+
