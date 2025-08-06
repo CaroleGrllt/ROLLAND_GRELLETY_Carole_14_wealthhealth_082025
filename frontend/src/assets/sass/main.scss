@@ -8,5 +8,8 @@
 @use './pages/list';
 @use './pages/error';
 @use './components/button';
+@use './components/form';
+@use './components/dropdown';
+@use './components/datepicker';
 @use './utils/mixins';
 @use './utils/variables';

@@ -1,0 +1,48 @@
+@use '../utils/variables' as v;
+@use '../utils/mixins';
+
+
+form {
+  display: grid;
+  gap: 30px;
+
+  section {
+    p {
+      color: v.$green;
+      font-weight: 700;
+      font-size: 18px;
+      margin-bottom: 15px;
+    }
+
+    .identity-inputs-container,
+    .container {
+      display: grid;
+      gap: 15px;
+    }
+
+    .name-inputs-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 25px;
+    }
+
+    .firstName-content,
+    .lastName-content,
+    .date-of-birth-container,
+    .content {
+      display: flex;
+      flex-direction: column;
+
+      label {
+        margin-bottom: 3px;
+      }
+
+      input {
+        padding: 6px 10px;
+        background-color: transparent !important;
+        border: none;
+        border-bottom: 1px solid;
+      }
+    }
+  }
+}

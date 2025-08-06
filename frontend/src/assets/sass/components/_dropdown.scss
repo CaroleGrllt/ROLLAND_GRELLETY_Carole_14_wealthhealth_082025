@@ -1,0 +1,30 @@
+@use '../utils/variables' as v;
+@use '../utils/mixins';
+
+.select {
+    width: 100%;
+
+    .rc-select-selector {
+        border: none !important;
+        border-bottom: 1px solid !important;
+
+        .rc-select-selection-placeholder, .rc-select-selection-item {
+            position: absolute;
+            top: 5px;
+            left: 3px;
+            pointer-events: none;
+            font-size: 16px;
+        }
+
+    }
+
+    .rc-select-arrow {
+        position: absolute;
+        top: 5px;
+        font-size: 14px;
+        color: #888;
+        margin-right: 8px;
+        display: flex;
+        align-items: center;
+    }
+}

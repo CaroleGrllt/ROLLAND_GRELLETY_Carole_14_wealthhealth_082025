@@ -1,0 +1,30 @@
+@use '../utils/variables' as v;
+@use '../utils/mixins';
+
+.react-datepicker__input-container  {
+    display: flex;
+    align-items: center;
+    position: relative;
+
+    .react-datepicker__calendar-icon  {
+        order: 1;
+        position: absolute;
+        right: 10px;
+        pointer-events: none;
+    }
+
+    label {
+        margin-bottom: 3px;
+    }
+
+
+    input {
+        width: 100%;
+        padding: 6px 10px;
+        background-color: transparent !important;
+        border-top: none;
+        border-left: none;
+        border-right: none;
+        border-bottom: 1px solid;
+    }
+}

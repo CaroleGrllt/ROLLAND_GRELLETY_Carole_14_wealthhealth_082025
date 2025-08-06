@@ -10,8 +10,8 @@ export default function Home() {
             </div>
             <h1>HRnet</h1>
             <div className="home-cta-container">
-                <Button logo={faUserPlus} text={'Create employee'} link={'new-employee'}></Button>
-                <Button logo={faAddressBook} text={'List of employees'} link={'list-employees'}></Button>
+                <Button type='button' logo={faUserPlus} text={'Create employee'} link={'new-employee'}></Button>
+                <Button type='button' logo={faAddressBook} text={'List of employees'} link={'list-employees'}></Button>
             </div>
         </div>
     )
