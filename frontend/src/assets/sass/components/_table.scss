@@ -1,0 +1,50 @@
+@use '../utils/variables' as v;
+@use '../utils/mixins';
+
+.dt-container {
+    .dt-layout-row {
+        table {
+            thead {
+                tr {
+                    th {
+                        .dt-column-title {
+                        color: v.$green;
+                        }
+
+                        .dt-column-order {
+                        &::before,
+                        &::after {
+                            margin: 5px 0;
+                            color: v.$lightgreen;
+                        }
+
+                        &:active,
+                        &:focus {
+                            color: v.$green; 
+                        }
+                        }
+                    }
+                }
+            }
+        }
+
+        .dt-paging {
+            button {
+                background-color: v.$lightgreen;
+                color: v.$white !important; 
+                border: none !important;
+
+                
+                &:hover {
+                    background: v.$green !important;
+                }
+
+
+                &.current {
+                    background-color: v.$green; 
+                    color: v.$white !important;
+                }
+            }        
+        }
+    }
+}

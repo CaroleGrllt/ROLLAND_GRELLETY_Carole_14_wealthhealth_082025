@@ -7,7 +7,7 @@ import { faUserPlus } from '@fortawesome/free-solid-svg-icons';
 
 import "react-datepicker/dist/react-datepicker.css";
 import 'rc-select/assets/index.css';
-import Button from './button'
+import Button from './Button'
 import States from '../data/states.json'
 
 export default function Form() {
@@ -122,7 +122,7 @@ export default function Form() {
                     </div>
                 </div>
             </section>
-            <Button type='submit' logo={faUserPlus} text={'Create employee'} ></Button>    
+            <Button type='submit' logo={faUserPlus} text={'Create employee'}></Button>    
         </form>
     )
 }

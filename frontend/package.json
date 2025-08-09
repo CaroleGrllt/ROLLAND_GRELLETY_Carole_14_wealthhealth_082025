@@ -17,6 +17,8 @@
     "@fortawesome/react-fontawesome": "^0.2.3",
     "@redux-devtools/extension": "^3.3.0",
     "@reduxjs/toolkit": "^2.8.2",
+    "datatables.net-dt": "^2.3.2",
+    "datatables.net-react": "^1.0.1",
     "prop-types": "^15.8.1",
     "rc-select": "^14.16.8",
     "react": "^19.1.0",

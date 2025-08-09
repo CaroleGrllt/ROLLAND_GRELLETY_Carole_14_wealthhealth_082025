@@ -1,5 +1,5 @@
 import Logo from '../assets/img/logo.webp'
-import Button from "../components/button";
+import Button from "../components/Button";
 import { faUserPlus, faAddressBook } from '@fortawesome/free-solid-svg-icons';
 
 export default function Home() {
