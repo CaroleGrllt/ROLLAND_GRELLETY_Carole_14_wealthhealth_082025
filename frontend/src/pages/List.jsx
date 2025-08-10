@@ -8,29 +8,7 @@ export default function List() {
     const tableData = [
         [
             'Mina',
-            'Ratus',
-            '01/11/1985',
-            '1 rue Hatier',
-            'Paris',
-            '75001',
-            'France',
-            '01/09/1998',
-            'HR'
-        ],
-                [
             'Mina',
-            'Ratus',
-            '01/11/1985',
-            '1 rue Hatier',
-            'Paris',
-            '75001',
-            'France',
-            '01/09/1998',
-            'HR'
-        ],
-                [
-            'Mina',
-            'Ratus',
             '01/11/1985',
             '1 rue Hatier',
             'Paris',
@@ -41,51 +19,7 @@ export default function List() {
         ],
                 [
             'Marou',
-            'Ratus',
-            '01/11/1985',
-            '1 rue Hatier',
-            'Paris',
-            '75001',
-            'France',
-            '01/09/1998',
-            'HR'
-        ],
-                [
-            'Mina',
-            'Ratus',
-            '01/11/1985',
-            '1 rue Hatier',
-            'Paris',
-            '75001',
-            'France',
-            '01/09/1998',
-            'HR'
-        ],
-                [
-            'Belo',
-            'Ratus',
-            '01/11/1985',
-            '1 rue Hatier',
-            'Paris',
-            '75001',
-            'France',
-            '01/09/1998',
-            'HR'
-        ],
-                [
             'Marou',
-            'Ratus',
-            '01/11/1985',
-            '1 rue Hatier',
-            'Paris',
-            '75001',
-            'France',
-            '01/09/1998',
-            'HR'
-        ],
-                [
-            'Mina',
-            'Ratus',
             '01/11/1985',
             '1 rue Hatier',
             'Paris',
@@ -96,39 +30,17 @@ export default function List() {
         ],
                 [
             'Belo',
-            'Ratus',
-            '01/11/1985',
-            '1 rue Hatier',
-            'Paris',
-            '75001',
-            'France',
-            '01/09/1998',
-            'HR'
-        ],
-                [
-            'Marou',
-            'Ratus',
-            '01/11/1985',
-            '1 rue Hatier',
-            'Paris',
-            '75001',
-            'France',
-            '01/09/1998',
-            'HR'
-        ],
-                [
-            'Mina',
-            'Ratus',
-            '01/11/1985',
-            '1 rue Hatier',
-            'Paris',
-            '75001',
-            'France',
-            '01/09/1998',
-            'HR'
-        ],
-                [
             'Belo',
+            '01/11/1985',
+            '1 rue Hatier',
+            'Paris',
+            '75001',
+            'France',
+            '01/09/1998',
+            'HR'
+        ],
+                [
+            'Ratus',
             'Ratus',
             '01/11/1985',
             '1 rue Hatier',
@@ -138,7 +50,6 @@ export default function List() {
             '01/09/1998',
             'HR'
         ],
-
     ]
     return(
         <div className='list-container'>

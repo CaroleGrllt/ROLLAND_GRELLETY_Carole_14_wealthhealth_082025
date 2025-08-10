@@ -1,0 +1,21 @@
+@use '../utils/variables' as v;
+@use '../utils/mixins';
+
+.error-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    h2 {
+        color: v.$darkgreen;
+        font-size: 10em;
+        margin: 0;
+        font-weight: 700;
+    }
+
+    p {
+        color: v.$darkgreen;
+        font-size: 3em;
+        margin-bottom: 50px;
+    }
+}

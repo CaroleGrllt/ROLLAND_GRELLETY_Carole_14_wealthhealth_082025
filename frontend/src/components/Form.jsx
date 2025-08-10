@@ -1,5 +1,6 @@
-import React, { useState } from "react";
-
+import React, {  useState } from "react";
+import { useDispatch } from 'react-redux'
+import { useNavigate } from "react-router";
 import DatePicker from "react-datepicker";
 import Select, { Option } from 'rc-select';
 import { FaChevronDown } from "react-icons/fa"
@@ -9,14 +10,53 @@ import "react-datepicker/dist/react-datepicker.css";
 import 'rc-select/assets/index.css';
 import Button from './Button'
 import States from '../data/states.json'
+import { addEmployee } from "../redux/actions/employee.action";
 
 export default function Form() {
-    const [birthDate, setBirthDate] = useState();
-    const [startDate, setStartDate] = useState();
-    const [selectedState, setSelectedState] = useState()
-    const [selectedDepartment, setSelectedDepartment] = useState()
+    const dispatch  = useDispatch()
+    const navigate  = useNavigate()
 
-    const handleSubmit = () => {}
+    const [firstName, setFirstName] = useState()
+    const [lastName, setLastName] = useState()
+    const [birthDate, setBirthDate] = useState()
+    const [street, setStreet] = useState()
+    const [city, setCity] = useState()
+    const [zip, setZip] = useState()
+    const [selectedState, setSelectedState] = useState()
+    const [startDate, setStartDate] = useState()
+    const [selectedDepartment, setSelectedDepartment] = useState()
+    const [errorMessage, setErrorMessage] = useState('')
+
+    const handleSubmit = async(e) => {
+        e.preventDefault()
+
+        const fields = {
+            firstName, 
+            lastName, 
+            birthDate: birthDate.toLocaleDateString("en-GB"), 
+            street, 
+            city, 
+            zip, 
+            selectedState, 
+            startDate: startDate.toLocaleDateString("en-GB"), 
+            selectedDepartment
+        }
+
+        if (Object.values(fields).some(field => !field)) {
+            setErrorMessage("All fields are required.")
+            return;
+        }
+
+        try {
+            await dispatch(addEmployee(fields))
+            setErrorMessage('')
+            navigate('/list-employees')
+        } catch (err) {
+            const errorMessage = err?.message || "An unexpected error occurred";
+            console.error(errorMessage)
+            setErrorMessage(errorMessage)       
+        }
+    }
 
     return(
         <form onSubmit={handleSubmit}>
@@ -26,11 +66,11 @@ export default function Form() {
                     <div className="name-inputs-container">
                         <div className="firstName-content">
                             <label htmlFor="firstName">First name</label>
-                            <input type="text" id="firstName" name="firstName" placeholder="John" required />
+                            <input type="text" id="firstName" name="firstName" placeholder="John" onChange={(e) => setFirstName(e.target.value)}  />
                         </div>
                         <div className="lastName-content">
                             <label htmlFor="lastName">Last name</label>
-                            <input type="text" id="lastName" name="lastName" placeholder="Smith" required />
+                            <input type="text" id="lastName" name="lastName" placeholder="Smith" onChange={(e) => setLastName(e.target.value)}  />
                         </div>
                     </div>
                     <div className="date-of-birth-container">
@@ -40,12 +80,10 @@ export default function Form() {
                             className="datepicker-birth"
                             showIcon
                             dateFormat='dd/MM/yyyy'
-                            required
                             placeholderText='jj/mm/aaaa'
                             maxDate={new Date()}
                             minDate={new Date("1900-01-01")}
                             selected={birthDate}
-                            // onChange={handleChangeBirthDate} OU !!! 
                             onChange={(date) => setBirthDate(date)} 
                         />
                     </div>
@@ -56,15 +94,15 @@ export default function Form() {
                 <div className="container address-inputs-container">
                     <div className="content street-content">
                         <label htmlFor="street">Street</label>
-                        <input type="text" id="street" name="street" placeholder="1 av. Kennedy" required />
+                        <input type="text" id="street" name="street" placeholder="1 av. Kennedy" onChange={(e) => setStreet(e.target.value)}  />
                     </div>
                     <div className="content city-content">
                         <label htmlFor="city">City</label>
-                        <input type="text" id="city" name="city" placeholder="New-York" required />
+                        <input type="text" id="city" name="city" placeholder="New-York" onChange={(e) => setCity(e.target.value)}  />
                     </div>
                     <div className="content zip-content">
                         <label htmlFor="zip">Zip</label>
-                        <input type="text" id="zip" name="zip" placeholder="07008" required />
+                        <input type="text" id="zip" name="zip" placeholder="07008" onChange={(e) => setZip(e.target.value)}  />
                     </div>
                     <div className="content state-content">
                         <label htmlFor="state">State</label>
@@ -77,7 +115,7 @@ export default function Form() {
                             onChange={(value) => setSelectedState(value)}
                         >
                             {States.map(state => (
-                                <Select.Option key={state.name} value={state.name}>
+                                <Select.Option key={state.name} value={state.abbreviation}>
                                     {state.name}
                                 </Select.Option> 
                             ))}
@@ -95,7 +133,6 @@ export default function Form() {
                             className="datepicker-startDate"
                             showIcon
                             dateFormat='dd/MM/yyyy'
-                            required
                             placeholderText='jj/mm/aaaa'
                             maxDate={new Date()}
                             minDate={new Date("1900-01-01")}
@@ -122,7 +159,8 @@ export default function Form() {
                     </div>
                 </div>
             </section>
-            <Button type='submit' logo={faUserPlus} text={'Create employee'}></Button>    
+            <Button type='submit' logo={faUserPlus} text={'Create employee'}></Button>  
+            {errorMessage && <p className='error-message'>{errorMessage}</p>} 
         </form>
     )
 }
