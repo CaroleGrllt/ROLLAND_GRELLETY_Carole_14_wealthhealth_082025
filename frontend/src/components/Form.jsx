@@ -33,12 +33,12 @@ export default function Form() {
         const fields = {
             firstName, 
             lastName, 
-            birthDate: birthDate.toLocaleDateString("en-GB"), 
+            birthDate: birthDate, 
             street, 
             city, 
             zip, 
             selectedState, 
-            startDate: startDate.toLocaleDateString("en-GB"), 
+            startDate: startDate, 
             selectedDepartment
         }
 

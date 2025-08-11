@@ -1,80 +1,48 @@
 import DataTable from 'datatables.net-react';
 import DT from 'datatables.net-dt';
 import 'datatables.net-dt/css/dataTables.dataTables.css';
+import { useSelector } from 'react-redux';
 // eslint-disable-next-line react-hooks/rules-of-hooks
 DataTable.use(DT);
 
 export default function List() {
-    const tableData = [
-        [
-            'Mina',
-            'Mina',
-            '01/11/1985',
-            '1 rue Hatier',
-            'Paris',
-            '75001',
-            'France',
-            '01/09/1998',
-            'HR'
-        ],
-                [
-            'Marou',
-            'Marou',
-            '01/11/1985',
-            '1 rue Hatier',
-            'Paris',
-            '75001',
-            'France',
-            '01/09/1998',
-            'HR'
-        ],
-                [
-            'Belo',
-            'Belo',
-            '01/11/1985',
-            '1 rue Hatier',
-            'Paris',
-            '75001',
-            'France',
-            '01/09/1998',
-            'HR'
-        ],
-                [
-            'Ratus',
-            'Ratus',
-            '01/11/1985',
-            '1 rue Hatier',
-            'Paris',
-            '75001',
-            'France',
-            '01/09/1998',
-            'HR'
-        ],
-    ]
+
+    const employeesState = useSelector(state => state.employees.employees)
+    console.log(employeesState)
+
+    const tableData = employeesState.map(employee => ({
+        firstName: employee.firstName,
+        lastName: employee.lastName,
+        birthDate: employee.birthDate.toLocaleDateString(),  
+        street: employee.street,
+        city: employee.city,
+        zip: employee.zip,
+        selectedState: employee.selectedState,
+        startDate: employee.startDate.toLocaleDateString(),  
+        selectedDepartment: employee.selectedDepartment
+    }))
+
     return(
         <div className='list-container'>
             <div className='list-container-title'>
-                <h2>List of employee</h2>
+                <h2>List of employees</h2>
             </div>
             <div className="table-container">
                 <DataTable
                 className='table'
                 data={tableData}
-                >
-                    <thead>
-                        <tr>
-                            <th>First Name</th>
-                            <th>Last Name</th>
-                            <th>Date of Birth</th>
-                            <th>Street</th>
-                            <th>City</th>
-                            <th>ZIP</th>
-                            <th>State</th>
-                            <th>Start Date</th>
-                            <th>Department</th>
-                        </tr>
-                    </thead>
-                </DataTable>
+                columns={[
+                        { title: 'First Name', data: 'firstName' },
+                        { title: 'Last Name', data: 'lastName' },
+                        { title: 'Date of Birth', data: 'birthDate' },
+                        { title: 'Street', data: 'street' },
+                        { title: 'City', data: 'city' },
+                        { title: 'ZIP', data: 'zip' },
+                        { title: 'State', data: 'selectedState' },
+                        { title: 'Start Date', data: 'startDate' },
+                        { title: 'Department', data: 'selectedDepartment' },
+                    ]}
+                />
             </div>
         </div>
     )
