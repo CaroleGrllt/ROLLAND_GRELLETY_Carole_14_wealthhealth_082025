@@ -3,16 +3,17 @@
 
 
 .new-container {
-    margin: 30px 100px 70px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 100%;
-
+    margin-bottom: 20px;
     .new-container-title {
         h2 {
-            font-size: 2rem;
             color: v.$darkgreen;
+            
+            @include mixins.xs {
+                font-size: 2rem;
+            }
         }
     }
 
@@ -20,7 +21,7 @@
         background-color: v.$offwith;
         border-radius: 10px;
         box-shadow: 2px 2px 15px 0.5px v.$darkblue;
-        padding: 30px 45px;
-        width: 50%;
+        padding: 30px 55px;
+        width: fit-content;
     }
 }

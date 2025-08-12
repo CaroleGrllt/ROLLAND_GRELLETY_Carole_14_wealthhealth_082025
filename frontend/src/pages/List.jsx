@@ -1,9 +1,15 @@
 import DataTable from 'datatables.net-react';
 import DT from 'datatables.net-dt';
 import 'datatables.net-dt/css/dataTables.dataTables.css';
-import { useSelector } from 'react-redux';
+import Responsive from 'datatables.net-responsive';
+import 'datatables.net-responsive-dt/css/responsive.dataTables.css';
+
 // eslint-disable-next-line react-hooks/rules-of-hooks
 DataTable.use(DT);
+// eslint-disable-next-line react-hooks/rules-of-hooks
+DataTable.use(Responsive);
+
+import { useSelector } from 'react-redux';
 
 export default function List() {
 
@@ -42,6 +48,10 @@ export default function List() {
                         { title: 'Start Date', data: 'startDate' },
                         { title: 'Department', data: 'selectedDepartment' },
                     ]}
+                    options={{
+            responsive: true,
+            columnDefs: [{ targets: 0, responsivePriority: 1 }]
+          }}
                 />
             </div>
         </div>

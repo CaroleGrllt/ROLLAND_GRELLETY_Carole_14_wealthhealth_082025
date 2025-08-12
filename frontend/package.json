@@ -19,6 +19,8 @@
     "@reduxjs/toolkit": "^2.8.2",
     "datatables.net-dt": "^2.3.2",
     "datatables.net-react": "^1.0.1",
+    "datatables.net-responsive": "^3.0.5",
+    "datatables.net-responsive-dt": "^3.0.5",
     "prop-types": "^15.8.1",
     "rc-select": "^14.16.8",
     "react": "^19.1.0",

@@ -3,15 +3,20 @@
 
 
 form {
+  width: 100%;
   display: grid;
   gap: 30px;
 
   section {
     p {
+      font-size: 2rem;
       color: v.$green;
       font-weight: 700;
-      font-size: 18px;
       margin-bottom: 15px;
+
+      @include mixins.xs {
+          font-size: 1rem;
+      }
     }
 
     .identity-inputs-container,
@@ -22,8 +27,13 @@ form {
 
     .name-inputs-container {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 25px;
+      gap: 15px;
+      
+      @include mixins.md {
+        grid-template-columns: 1fr 1fr;
+        gap: 25px;
+      }
+
     }
 
     .firstName-content,
@@ -34,7 +44,12 @@ form {
       flex-direction: column;
 
       label {
+        font-size: 24px;
         margin-bottom: 3px;
+
+        @include mixins.xs {
+            font-size: 16px;
+        }
       }
 
       input {
@@ -42,6 +57,14 @@ form {
         background-color: transparent !important;
         border: none;
         border-bottom: 1px solid;
+
+        &::placeholder {
+          font-size: 20px;
+          
+          @include mixins.xs {
+              font-size: 14px;
+          }
+        }
       }
     }
   }

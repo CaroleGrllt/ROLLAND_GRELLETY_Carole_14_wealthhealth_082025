@@ -12,22 +12,33 @@
     height: 100%;
 
     .home-logo-container {
-        width: 250px;
-        
+        width: 200px;
+
+        @include mixins.md {
+            width: 250px;
+        }
+
         img {
             width: 100%;
         }
     }
 
     h1 {
-        font-size: 4rem;
+        font-size: 3rem;
         color: v.$green;
         margin: 20px 0 50px;
+
+        @include mixins.md {
+            font-size: 4rem;
+        }
     }
 
     .home-cta-container {
         display: grid;
-        grid-template-columns: 1fr 1fr;
         grid-gap: 20px;
+        
+        @include mixins.sm {
+            grid-template-columns: 1fr 1fr;
+        }
     }
 }
