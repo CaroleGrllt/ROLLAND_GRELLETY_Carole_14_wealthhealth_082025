@@ -4,6 +4,9 @@
 header {
   background-color: v.$offwith;
   border-bottom: 2px solid v.$lightgrey;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   nav {
     display: flex;
@@ -20,18 +23,6 @@ header {
         text-decoration: underline;
         font-weight: 700;
         color: v.$darkgreen;
-      }
-    }
-
-    .nav-logo {
-      display: inline-flex;
-      align-items: center;
-      gap: .5rem;
-
-      img {
-        width: 80px;
-        height: auto;
-        display: block;
       }
     }
 
@@ -140,11 +131,6 @@ header {
       }
     }
 
-    .drawer-logo img {
-      height: 28px;
-      width: auto;
-      display: block;
-    }
   }
 
   .drawer-links {

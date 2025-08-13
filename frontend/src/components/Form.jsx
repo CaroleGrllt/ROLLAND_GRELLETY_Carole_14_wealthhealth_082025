@@ -2,12 +2,11 @@ import React, {  useState } from "react";
 import { useDispatch } from 'react-redux'
 import { useNavigate } from "react-router";
 import DatePicker from "react-datepicker";
-import Select, { Option } from 'rc-select';
+import { Select, Option } from '@material-tailwind/react'
 import { FaChevronDown } from "react-icons/fa"
 import { faUserPlus } from '@fortawesome/free-solid-svg-icons';
 
 import "react-datepicker/dist/react-datepicker.css";
-import 'rc-select/assets/index.css';
 import Button from './Button'
 import States from '../data/states.json'
 import { addEmployee } from "../redux/actions/employee.action";
@@ -109,15 +108,18 @@ export default function Form() {
                         <Select
                             id='state'
                             className="select"
-                            suffixIcon={<FaChevronDown />}
-                            placeholder="Alabama"
+                            variant="static"
+                            arrow={<FaChevronDown />}
+                            menuProps={{
+                                className: "max-h-48 overflow-y-auto" // max hauteur ~ 6 options
+                            }}
                             value={selectedState}
                             onChange={(value) => setSelectedState(value)}
                         >
                             {States.map(state => (
-                                <Select.Option key={state.name} value={state.abbreviation}>
+                                <Option key={state.name} value={state.abbreviation}>
                                     {state.name}
-                                </Select.Option> 
+                                </Option>
                             ))}
                         </Select>
                     </div>                                                   
@@ -143,18 +145,18 @@ export default function Form() {
                     <div className="content department-content">
                         <label htmlFor="department">Department</label>
                         <Select
-                            id='state'
+                            id='department'
                             className="select"
-                            suffixIcon={<FaChevronDown />}
-                            placeholder="Sales"
+                            variant="static"
+                            arrow={<FaChevronDown />}
                             value={selectedDepartment}
                             onChange={(value) => setSelectedDepartment(value)}
                         >
-                            <Select.Option value="Sales">Sales</Select.Option>
-                            <Select.Option value="Marketing">Marketing</Select.Option>
-                            <Select.Option value="Engineering">Engineering</Select.Option>
-                            <Select.Option value="Human Resources">Human Resources</Select.Option> 
-                            <Select.Option value="Legal">Legal</Select.Option>                        
+                            <Option value="Sales">Sales</Option>
+                            <Option value="Marketing">Marketing</Option>
+                            <Option value="Engineering">Engineering</Option>
+                            <Option value="Human Ressources">Human Ressources</Option>
+                            <Option value="Legal">Legal</Option>
                         </Select>
                     </div>
                 </div>

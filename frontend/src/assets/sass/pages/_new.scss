@@ -1,27 +1,46 @@
 @use '../utils/variables' as v;
 @use '../utils/mixins';
 
-
 .new-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 20px;
-    .new-container-title {
-        h2 {
-            color: v.$darkgreen;
-            
-            @include mixins.xs {
-                font-size: 2rem;
-            }
-        }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 50px 0 20px 0;
+
+  .new-container-title {
+    h2 {
+      color: v.$darkgreen;
+      @include mixins.xs {
+        font-size: 2rem;
+      }
+    }
+  }
+
+  .form-container {
+    background-color: v.$offwith; 
+    border-radius: 10px;
+    box-shadow: 2px 2px 15px 0.5px v.$darkblue;
+    padding: 30px 55px;
+
+    @include mixins.xs {
+      padding: 20px 16px;
     }
 
-    .form-container {
-        background-color: v.$offwith;
-        border-radius: 10px;
-        box-shadow: 2px 2px 15px 0.5px v.$darkblue;
-        padding: 30px 55px;
-        width: fit-content;
+    .form-skeleton {
+      min-height: 420px;
+      background: linear-gradient(90deg, #f6f7f8 25%, #eeeeee 37%, #f6f7f8 63%);
+      background-size: 400% 100%;
+      animation: shimmer 1.2s infinite linear;
     }
+  }
+}
+
+// accessibilité/perf : couper l’anim si l’utilisateur préfère moins de mouvement
+@media (prefers-reduced-motion: reduce) {
+  .form-skeleton { animation: none; }
+}
+
+@keyframes shimmer {
+  0% { background-position: 100% 0; }
+  100% { background-position: -100% 0; }
 }
