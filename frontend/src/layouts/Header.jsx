@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
-import Logo from '../assets/img/logo.webp';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHouse, faUserPlus, faAddressBook, faBars, faXmark } from '@fortawesome/free-solid-svg-icons';
 
@@ -25,11 +24,6 @@ export default function Header() {
   return (
     <header className="site-header">
       <nav className="nav">
-        <Link to="/" className="nav-logo">
-          <img src={Logo} alt="Wealth Health Logo" />
-          <h1 className="sr-only">Wealth Health</h1>
-        </Link>
-
         {/* desktop */}
         <ul className="nav-links">
           <li>
@@ -92,9 +86,6 @@ export default function Header() {
               >
                 <FontAwesomeIcon icon={faXmark} />
               </button>
-              <Link to="/" className="drawer-logo" onClick={() => setOpen(false)}>
-                <img src={Logo} alt="Wealth Health Logo" />
-              </Link>
             </div>
             <ul className="drawer-links" onClick={() => setOpen(false)}>
               <li>
