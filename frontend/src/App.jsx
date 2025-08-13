@@ -1,18 +1,20 @@
-// REACT
+// App.tsx
+import { Suspense, lazy } from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
-//LAYOUTS AND COMPONENTS
-import HomeLayout from './layouts/HomeLayout';
-import DefaultLayout from './layouts/DefaultLayout';
-import Home from './pages/Home';
-import New from './pages/New';
-import List from './pages/List';
-import Error from './pages/Error'
+// LAYOUTS & PAGES en lazy
+const HomeLayout    = lazy(() => import('./layouts/HomeLayout'));
+const DefaultLayout = lazy(() => import('./layouts/DefaultLayout'));
+
+const Home  = lazy(() => import('./pages/Home'));
+const New   = lazy(() => import('./pages/New'));
+const List  = lazy(() => import('./pages/List'));
+const ErrorPage = lazy(() => import('./pages/Error'));
 
 export default function App() {
   const router = createBrowserRouter([
     {
-      path: "/",
+      path: '/',
       element: (
         <HomeLayout>
           <Home />
@@ -20,7 +22,7 @@ export default function App() {
       ),
     },
     {
-      path: "/new-employee",
+      path: '/',
       element: (
         <DefaultLayout>
           <New />
@@ -28,7 +30,7 @@ export default function App() {
       ),
     },
     {
-      path: "/list-employees",
+      path: '/list-employees',
       element: (
         <DefaultLayout>
           <List />
@@ -36,14 +38,18 @@ export default function App() {
       ),
     },
     {
-      path: "*",
+      path: '*',
       element: (
         <HomeLayout>
-          <Error />
+          <ErrorPage />
         </HomeLayout>
       ),
     },
   ]);
 
-  return <RouterProvider router={router} />;
+  return (
+    <Suspense>
+      <RouterProvider router={router} />
+    </Suspense>
+  );
 }

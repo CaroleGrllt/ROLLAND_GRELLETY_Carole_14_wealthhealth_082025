@@ -19,12 +19,12 @@ export default function List() {
     const tableData = employeesState.map(employee => ({
         firstName: employee.firstName,
         lastName: employee.lastName,
-        birthDate: employee.birthDate.toLocaleDateString(),  
+        birthDate: employee.birthDate.toLocaleDateString("en-GB"),  
         street: employee.street,
         city: employee.city,
         zip: employee.zip,
         selectedState: employee.selectedState,
-        startDate: employee.startDate.toLocaleDateString(),  
+        startDate: employee.startDate.toLocaleDateString("en-GB"),  
         selectedDepartment: employee.selectedDepartment
     }))
 

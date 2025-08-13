@@ -1,0 +1,39 @@
+@use '../utils/variables' as v;
+@use '../utils/mixins';
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+
+  .modal {
+    width: min(90vw, 420px);
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    
+    .modal-body {
+      padding: 26px 16px 16px;
+      font-size: 1.5rem;
+      text-align: center;
+    }
+
+    .modal-footer {
+      padding: 12px 16px;
+      display: flex;
+      justify-content: flex-end;
+      gap: 8px;
+      border-top: 1px solid #ddd;
+    }
+  }
+}
+
+
+
+
+
+
