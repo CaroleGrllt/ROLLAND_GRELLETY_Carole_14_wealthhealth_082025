@@ -9,9 +9,25 @@
     .react-datepicker__calendar-icon  {
         order: 1;
         position: absolute;
-        right: 10px;
+        right: 25px;
         pointer-events: none;
     }
+
+    .react-datepicker__close-icon {
+        border-radius: 0;
+        box-shadow: none;
+
+        &:hover {
+            background-color: transparent;
+        }
+
+        &::after {
+            background-color: v.$green;
+
+
+        }
+    }
+    
 
     label {
         margin-bottom: 3px;
