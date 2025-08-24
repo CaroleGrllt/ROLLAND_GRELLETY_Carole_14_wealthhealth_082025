@@ -91,4 +91,9 @@ form {
       }
     }
   }
+
+  .error-message {
+    text-align: center;
+    color: v.$red;
+  }
 }

@@ -10,10 +10,9 @@ import { addEmployee } from "../redux/actions/employee.action";
 
 // COMPONENTS
 import Button from "./Button";
+import DatePicker from "./DatePicker";
 
-// PACKAGES NPMJS
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
+// PACKAGES NPMJS - Select and Modal (datepicker in another file)
 import { Select, Option } from "@material-tailwind/react";
 import { Modal } from '@carole-rg/hr-modal-react';
 import '@carole-rg/hr-modal-react/styles.css';
@@ -30,12 +29,12 @@ export default function Form() {
   // Valeurs initiales
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
-    const [birthDate, setBirthDate] = useState(null); 
+    const [birthDate, setBirthDate] = useState(); 
     const [street, setStreet] = useState("");
     const [city, setCity] = useState("");
     const [zip, setZip] = useState("");
     const [selectedState, setSelectedState] = useState(""); 
-    const [startDate, setStartDate] = useState(null);       
+    const [startDate, setStartDate] = useState();       
     const [selectedDepartment, setSelectedDepartment] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
 
@@ -95,7 +94,7 @@ export default function Form() {
             return
         }
 
-          // Âge : startDate au moins 15 ans après birthDate
+        // Âge : startDate au moins 15 ans après birthDate
         const birthPlus15 = new Date(birthDate)
         birthPlus15.setFullYear(birthPlus15.getFullYear() + 15)
         if (startDate < birthPlus15) {
@@ -161,17 +160,9 @@ export default function Form() {
                     </div>
                     <div className="date-of-birth-container">
                         <label htmlFor="birth">Date of birth</label>
-                        <DatePicker
-                        id="birth"
-                        className="datepicker-birth"
-                        showIcon
-                        dateFormat="dd/MM/yyyy"
-                        placeholderText="jj/mm/aaaa"
-                        maxDate={new Date()}
-                        minDate={new Date("1900-01-01")}
-                        selected={birthDate}               
-                        onChange={(date) => setBirthDate(date)}
-                        isClearable
+                        <DatePicker 
+                            value={birthDate}
+                            onChange={setBirthDate}
                         />
                     </div>
                     </div>
@@ -233,23 +224,14 @@ export default function Form() {
                     </div>
                     </div>
                 </section>
-
                 <section>
                     <p>Information</p>
                     <div className="container information-inputs-container">
                     <div className="content start-content">
                         <label htmlFor="startDate">Start date</label>
-                        <DatePicker
-                        id="startDate"
-                        className="datepicker-startDate"
-                        showIcon
-                        dateFormat="dd/MM/yyyy"
-                        placeholderText="jj/mm/aaaa"
-                        maxDate={new Date()}
-                        minDate={new Date("1900-01-01")}
-                        selected={startDate}               
-                        onChange={(date) => setStartDate(date)}
-                        isClearable
+                        <DatePicker 
+                            value={startDate}
+                            onChange={setStartDate}
                         />
                     </div>
                     <div className="content department-content">
@@ -282,5 +264,5 @@ export default function Form() {
                 closeBtn="Back to form"
             />
         </>
-    );
+    )
 }
