@@ -52,6 +52,10 @@ form {
         }
       }
 
+      // .react-datepicker__calendar-icon  {
+      //   width: 15px;
+      // }
+
       input, .select {
         padding: 6px 10px;
         background-color: transparent !important;
@@ -59,6 +63,7 @@ form {
         border-bottom: 1px solid v.$black !important;
         box-shadow: none !important;
         border-radius: 0 !important;
+        width: -webkit-fill-available;
 
         &::placeholder {
           font-size: 18px;

@@ -22,7 +22,7 @@ export default function App() {
       ),
     },
     {
-      path: '/',
+      path: '/new-employee',
       element: (
         <DefaultLayout>
           <New />

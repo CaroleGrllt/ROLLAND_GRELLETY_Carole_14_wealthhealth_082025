@@ -1,14 +1,28 @@
+// REACT
 import { useState } from "react";
+
+// REDUX
 import { useDispatch } from "react-redux";
-import DatePicker from "react-datepicker";
-import { Select, Option } from "@material-tailwind/react";
-import { FaChevronDown } from "react-icons/fa";
-import { faUserPlus } from "@fortawesome/free-solid-svg-icons";
-import "react-datepicker/dist/react-datepicker.css";
-import Button from "./Button";
-import Modal from "./modal";
+
+// DATAS
 import States from "../data/states.json";
 import { addEmployee } from "../redux/actions/employee.action";
+
+// COMPONENTS
+import Button from "./Button";
+
+// PACKAGES NPMJS
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import { Select, Option } from "@material-tailwind/react";
+import { Modal } from '@carole-rg/hr-modal-react';
+import '@carole-rg/hr-modal-react/styles.css';
+
+// ICONS
+import { FaChevronDown } from "react-icons/fa";
+import { faUserPlus } from "@fortawesome/free-solid-svg-icons";
+
+
 
 export default function Form() {
   const dispatch = useDispatch();
@@ -25,9 +39,7 @@ export default function Form() {
     const [selectedDepartment, setSelectedDepartment] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
 
-    const [isModalOpen, setIsModalOpen] = useState(false);
-    const [modalMessage, setModalMessage] = useState("");
-
+    const [open, setOpen] = useState(false);
 
     const resetForm = () => {
         setFirstName("");
@@ -66,8 +78,7 @@ export default function Form() {
         setErrorMessage("");
 
         resetForm();
-        setModalMessage("new employee registered");
-        setIsModalOpen(true);
+        setOpen(true)
 
         } catch (err) {
         const errorMessage = err?.message || "An unexpected error occurred";
@@ -163,13 +174,13 @@ export default function Form() {
                     <div className="content state-content">
                         <label htmlFor="state">State</label>
                         <Select
-                        id="state"
-                        className="select"
-                        variant="static"
-                        arrow={<FaChevronDown />}             
-                        menuProps={{ className: "max-h-48 overflow-y-auto w-full" }}
-                        value={selectedState}                  
-                        onChange={(value) => setSelectedState(value ?? "")}
+                            id="state"
+                            className="select"
+                            variant="static"
+                            arrow={<FaChevronDown />}             
+                            menuProps={{ className: "max-h-48 overflow-y-auto w-full" }}
+                            value={selectedState}                  
+                            onChange={(value) => setSelectedState(value ?? "")}
                         >
                         {States.map((state) => (
                             <Option key={state.name} value={state.abbreviation}>
@@ -223,12 +234,10 @@ export default function Form() {
                 {errorMessage && <p className="error-message">{errorMessage}</p>}
             </form>
             <Modal
-                isOpen={isModalOpen}
-                onClose={() => {
-                setIsModalOpen(false);
-                }}
-                message={modalMessage}
-                closeBtn="Return to form"
+                isOpen={open}
+                onClose={() => setOpen(false)}
+                message="new employee registered"
+                closeBtn="Back to form"
             />
         </>
     );
