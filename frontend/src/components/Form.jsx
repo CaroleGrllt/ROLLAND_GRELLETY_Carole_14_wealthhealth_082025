@@ -56,28 +56,70 @@ export default function Form() {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        const fields = {
-        firstName,
-        lastName,
-        birthDate, 
-        street,
-        city,
-        zip,
-        selectedState,
-        startDate,
-        selectedDepartment,
-        };
+        // Regex : pas de chiffres, espaces, ... .
+        const validValueRegex = /^[\p{L}]+(?:[ '-][\p{L}]+)*$/u;
 
-        if (Object.values(fields).some((field) => !field)) {
-        setErrorMessage("All fields are required.");
-        return;
+        const firstNameToSend = firstName.trim()
+        const lastNameToSend  = lastName.trim()
+        const streetToSend    = street.trim()
+        const cityToSend      = city.trim()
+        const zipToSend       = zip
+
+        if(
+            !firstNameToSend ||
+            !lastNameToSend ||
+            !birthDate ||
+            !streetToSend ||
+            !cityToSend ||
+            !zipToSend ||
+            !selectedState ||
+            !startDate ||
+            !selectedDepartment
+        ) {
+            setErrorMessage("All fields are required.")
+            return    
+        }
+
+
+        if (!validValueRegex.test(firstNameToSend) ||
+            !validValueRegex.test(lastNameToSend)  ||
+            !validValueRegex.test(cityToSend) 
+        ) {
+            setErrorMessage("The first name, last name, and city fields must not contain numbers or only spaces.")
+            return;
+        }
+
+        // zip : uniquement des chiffres, et AUCUN espace
+        if (/\s/.test(zipToSend) || !/^\d+$/.test(zipToSend)) {
+            setErrorMessage("The zip code must be made up of numbers without spaces.")
+            return
+        }
+
+          // Âge : startDate au moins 15 ans après birthDate
+        const birthPlus15 = new Date(birthDate)
+        birthPlus15.setFullYear(birthPlus15.getFullYear() + 15)
+        if (startDate < birthPlus15) {
+            setErrorMessage("Start date must be at least 15 years after date of birth.")
+            return
+        }
+
+        const fields = {
+            firstName: firstNameToSend,
+            lastName : lastNameToSend,
+            birthDate : birthDate.toLocaleDateString("en-GB"),
+            street : streetToSend,                
+            city : cityToSend,
+            zip : zipToSend,     
+            selectedState,
+            startDate : startDate.toLocaleDateString("en-GB"),
+            selectedDepartment,
         }
 
         try {
-        await dispatch(addEmployee(fields));
-        setErrorMessage("");
+        await dispatch(addEmployee(fields))
+        setErrorMessage("")
 
-        resetForm();
+        resetForm()
         setOpen(true)
 
         } catch (err) {
@@ -85,7 +127,7 @@ export default function Form() {
         console.error(errorMessage);
         setErrorMessage(errorMessage);
         }
-    };
+    }
 
     return (
         <>
