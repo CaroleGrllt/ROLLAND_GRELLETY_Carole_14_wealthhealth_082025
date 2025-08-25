@@ -1,25 +1,46 @@
 @use '../utils/variables' as v;
 @use '../utils/mixins';
 
-.datepicker {
-    background-color: v.$offwith;
-    padding: 15px;
+.react-datepicker__input-container {
+    display: flex;
+    align-items: center;
+    position: relative;
 
-    button {
-        box-shadow: none !important;
-        border: none !important;
+    .react-datepicker__calendar-icon {
+        order: 1;
+        position: absolute;
+        right: 25px;
+        pointer-events: none;
+    }
 
-        .rdp-chevron {
-            fill: v.$darkgreen;
-        }
+    .react-datepicker__close-icon {
+        border-radius: 0;
+        box-shadow: none;
 
         &:hover {
-            background-color: v.$lightgreen;
-            
+            background-color: transparent;
+        }
+
+        &::after {
+            background-color: v.$green;
+            position: absolute;
+            bottom: 12px;
+            right: 0;
+
         }
     }
 
-    .rdp-today {
-        color: v.$darkgreen !important;
+    label {
+        margin-bottom: 3px;
+    }
+
+    input {
+        width: 100%;
+        padding: 6px 10px;
+        background-color: transparent !important;
+        border-top: none;
+        border-left: none;
+        border-right: none;
+        border-bottom: 1px solid;
     }
 }

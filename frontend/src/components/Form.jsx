@@ -9,9 +9,9 @@ import States from "../data/states.json";
 import { addEmployee } from "../redux/actions/employee.action";
 
 // COMPONENTS
-import Button from "./Button";
-import DatePicker from "./DatePicker";
-import Selector from "./Select";
+import Button from "./Button"
+import Selector from "./Select"
+import DateSelector from './DatePicker'
 
 // PACKAGES NPMJS - Modal (Select and datepicker in other files)
 import { Modal } from '@carole-rg/hr-modal-react';
@@ -21,19 +21,18 @@ import '@carole-rg/hr-modal-react/styles.css';
 import { faUserPlus } from "@fortawesome/free-solid-svg-icons";
 
 
-
 export default function Form() {
   const dispatch = useDispatch();
 
   // Valeurs initiales
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
-    const [birthDate, setBirthDate] = useState(); 
+    const [birthDate, setBirthDate] = useState(null); 
     const [street, setStreet] = useState("");
     const [city, setCity] = useState("");
     const [zip, setZip] = useState("");
     const [selectedState, setSelectedState] = useState(""); 
-    const [startDate, setStartDate] = useState();       
+    const [startDate, setStartDate] = useState(null);       
     const [selectedDepartment, setSelectedDepartment] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
 
@@ -159,9 +158,11 @@ export default function Form() {
                         </div>
                         <div className="date-of-birth-container">
                             <label htmlFor="birth">Date of birth</label>
-                            <DatePicker 
-                                value={birthDate}
-                                onChange={setBirthDate}
+                            <DateSelector 
+                                id="birth"
+                                className="datepicker-birth"
+                                selected={birthDate}
+                                onChange={(date) => setBirthDate(date)}
                             />
                         </div>
                     </div>
@@ -219,9 +220,11 @@ export default function Form() {
                     <div className="container information-inputs-container">
                     <div className="content start-content">
                         <label htmlFor="startDate">Start date</label>
-                        <DatePicker 
-                            value={startDate}
-                            onChange={setStartDate}
+                        <DateSelector 
+                            id="startDate"
+                            className="datepicker-startDate"
+                            selected={startDate}
+                            onChange={(date) => setStartDate(date)}
                         />
                     </div>
                     <div className="content department-content">

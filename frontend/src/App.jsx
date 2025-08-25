@@ -1,15 +1,12 @@
-// App.tsx
-import { Suspense, lazy } from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
-// LAYOUTS & PAGES en lazy
-const HomeLayout    = lazy(() => import('./layouts/HomeLayout'));
-const DefaultLayout = lazy(() => import('./layouts/DefaultLayout'));
+import HomeLayout from './layouts/HomeLayout';
+import DefaultLayout from './layouts/DefaultLayout';
+import Home from './pages/Home';
+import New from './pages/New';
+import List from './pages/List';
+import ErrorPage from './pages/Error';
 
-const Home  = lazy(() => import('./pages/Home'));
-const New   = lazy(() => import('./pages/New'));
-const List  = lazy(() => import('./pages/List'));
-const ErrorPage = lazy(() => import('./pages/Error'));
 
 export default function App() {
   const router = createBrowserRouter([
@@ -48,8 +45,6 @@ export default function App() {
   ]);
 
   return (
-    <Suspense>
       <RouterProvider router={router} />
-    </Suspense>
   );
 }
