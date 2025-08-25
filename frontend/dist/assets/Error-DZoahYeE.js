@@ -1,0 +1,1 @@
+import{j as o}from"./index-erLaz-ws.js";import{B as r}from"./Button-6e24lumu.js";import{f as t}from"./index-BTYtXc2C.js";function i(){return o.jsxs("div",{className:"error-container",children:[o.jsx("h2",{children:"404"}),o.jsx("p",{children:"OOPS! PAGE NOT FOUND."}),o.jsx(r,{type:"button",logo:t,text:"Go back to home",link:"/"})]})}export{i as default};

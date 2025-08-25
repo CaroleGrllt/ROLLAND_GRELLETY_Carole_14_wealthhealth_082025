@@ -1,0 +1,1 @@
+import{j as o}from"./index-erLaz-ws.js";import{F as t}from"./Footer-B-wpjdjP.js";function e({children:s}){return o.jsxs("div",{className:"home-layout-display",children:[o.jsx("main",{children:s}),o.jsx(t,{})]})}export{e as default};

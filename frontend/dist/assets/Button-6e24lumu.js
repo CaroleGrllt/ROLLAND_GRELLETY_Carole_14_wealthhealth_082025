@@ -1,0 +1,1 @@
+import{i as r,j as s}from"./index-erLaz-ws.js";import{F as m}from"./index-BTYtXc2C.js";function j({type:t,logo:e,text:a,link:n,onClick:o}){const i=r(),c=()=>{o&&o(),n&&i(n)};return s.jsxs("button",{type:t,onClick:c,className:"cta",children:[s.jsx(m,{icon:e,className:a}),s.jsx("span",{children:a})]})}export{j as B};
