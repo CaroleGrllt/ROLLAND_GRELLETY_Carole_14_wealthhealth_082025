@@ -11,14 +11,13 @@ import { addEmployee } from "../redux/actions/employee.action";
 // COMPONENTS
 import Button from "./Button";
 import DatePicker from "./DatePicker";
+import Selector from "./Select";
 
-// PACKAGES NPMJS - Select and Modal (datepicker in another file)
-import { Select, Option } from "@material-tailwind/react";
+// PACKAGES NPMJS - Modal (Select and datepicker in other files)
 import { Modal } from '@carole-rg/hr-modal-react';
 import '@carole-rg/hr-modal-react/styles.css';
 
 // ICONS
-import { FaChevronDown } from "react-icons/fa";
 import { faUserPlus } from "@fortawesome/free-solid-svg-icons";
 
 
@@ -134,37 +133,37 @@ export default function Form() {
                 <section className="container identity-container">
                     <p>Identity</p>
                     <div className="identity-inputs-container">
-                    <div className="name-inputs-container">
-                        <div className="firstName-content">
-                        <label htmlFor="firstName">First name</label>
-                        <input
-                            type="text"
-                            id="firstName"
-                            name="firstName"
-                            placeholder="John"
-                            value={firstName}
-                            onChange={(e) => setFirstName(e.target.value)}
-                        />
+                        <div className="name-inputs-container">
+                            <div className="firstName-content">
+                            <label htmlFor="firstName">First name</label>
+                            <input
+                                type="text"
+                                id="firstName"
+                                name="firstName"
+                                placeholder="John"
+                                value={firstName}
+                                onChange={(e) => setFirstName(e.target.value)}
+                            />
+                            </div>
+                            <div className="lastName-content">
+                            <label htmlFor="lastName">Last name</label>
+                            <input
+                                type="text"
+                                id="lastName"
+                                name="lastName"
+                                placeholder="Smith"
+                                value={lastName}
+                                onChange={(e) => setLastName(e.target.value)}
+                            />
+                            </div>
                         </div>
-                        <div className="lastName-content">
-                        <label htmlFor="lastName">Last name</label>
-                        <input
-                            type="text"
-                            id="lastName"
-                            name="lastName"
-                            placeholder="Smith"
-                            value={lastName}
-                            onChange={(e) => setLastName(e.target.value)}
-                        />
+                        <div className="date-of-birth-container">
+                            <label htmlFor="birth">Date of birth</label>
+                            <DatePicker 
+                                value={birthDate}
+                                onChange={setBirthDate}
+                            />
                         </div>
-                    </div>
-                    <div className="date-of-birth-container">
-                        <label htmlFor="birth">Date of birth</label>
-                        <DatePicker 
-                            value={birthDate}
-                            onChange={setBirthDate}
-                        />
-                    </div>
                     </div>
                 </section>
 
@@ -206,21 +205,12 @@ export default function Form() {
                     </div>
                     <div className="content state-content">
                         <label htmlFor="state">State</label>
-                        <Select
+                        <Selector
                             id="state"
-                            className="select"
-                            variant="static"
-                            arrow={<FaChevronDown />}             
-                            menuProps={{ className: "max-h-48 overflow-y-auto w-full" }}
-                            value={selectedState}                  
-                            onChange={(value) => setSelectedState(value ?? "")}
-                        >
-                        {States.map((state) => (
-                            <Option key={state.name} value={state.abbreviation}>
-                            {state.name}
-                            </Option>
-                        ))}
-                        </Select>
+                            value={selectedState}
+                            onChange={setSelectedState}
+                            options={States.map((s) => ({ value: s.abbreviation, label: s.name }))}
+                        />
                     </div>
                     </div>
                 </section>
@@ -236,20 +226,18 @@ export default function Form() {
                     </div>
                     <div className="content department-content">
                         <label htmlFor="department">Department</label>
-                        <Select
-                        id="department"
-                        className="select"
-                        variant="static"
-                        arrow={<FaChevronDown />}             
-                        value={selectedDepartment}             
-                        onChange={(value) => setSelectedDepartment(value ?? "")}
-                        >
-                        <Option value="Sales">Sales</Option>
-                        <Option value="Marketing">Marketing</Option>
-                        <Option value="Engineering">Engineering</Option>
-                        <Option value="Human Resources">Human Resources</Option>
-                        <Option value="Legal">Legal</Option>
-                        </Select>
+                        <Selector
+                            id="department"
+                            value={selectedDepartment}
+                            onChange={setSelectedDepartment}
+                            options={[
+                                { value: "Sales", label: "Sales" },
+                                { value: "Marketing", label: "Marketing" },
+                                { value: "Engineering", label: "Engineering" },
+                                { value: "Human Resources", label: "Human Resources" },
+                                { value: "Legal", label: "Legal" },
+                            ]}
+                        />
                     </div>
                     </div>
                 </section>

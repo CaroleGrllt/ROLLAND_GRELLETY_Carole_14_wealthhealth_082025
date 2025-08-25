@@ -13,7 +13,7 @@ export default function DatePicker({value,onChange}) {
     const [inputValue, setInputValue] = useState(value ? format(value, "dd/MM/yyyy") : "")
 
 
-    // Sync affichage quand la valeur externe change
+    // Sync affichage quand la valeur change
     useEffect(() => {
         setInputValue(value ? format(value, "dd/MM/yyyy") : "")
     }, [value]);
