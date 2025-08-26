@@ -1,16 +1,6 @@
-// PACKAGES NPMJS
-import DataTable from 'datatables.net-react';
-import DT from 'datatables.net-dt';
-import 'datatables.net-dt/css/dataTables.dataTables.css';
-import Responsive from 'datatables.net-responsive';
-import 'datatables.net-responsive-dt/css/responsive.dataTables.css';
-
-// eslint-disable-next-line react-hooks/rules-of-hooks
-DataTable.use(DT);
-// eslint-disable-next-line react-hooks/rules-of-hooks
-DataTable.use(Responsive);
 
 import { useSelector } from 'react-redux';
+import Table from '../components/Table';
 
 export default function List() {
 
@@ -29,30 +19,28 @@ export default function List() {
         selectedDepartment: employee.selectedDepartment
     }))
 
+    const columns = [
+        { title: "First Name", data: "firstName" },
+        { title: "Last Name", data: "lastName" },
+        { title: "Date of Birth", data: "birthDate" },
+        { title: "Street", data: "street" },
+        { title: "City", data: "city" },
+        { title: "ZIP", data: "zip" },
+        { title: "State", data: "selectedState" },
+        { title: "Start Date", data: "startDate" },
+        { title: "Department", data: "selectedDepartment" },
+    ];
+
     return(
         <div className='list-container'>
             <div className='list-container-title'>
                 <h2>List of employees</h2>
             </div>
             <div className="table-container">
-                <DataTable
-                className='table'
-                data={tableData}
-                columns={[
-                        { title: 'First Name', data: 'firstName' },
-                        { title: 'Last Name', data: 'lastName' },
-                        { title: 'Date of Birth', data: 'birthDate' },
-                        { title: 'Street', data: 'street' },
-                        { title: 'City', data: 'city' },
-                        { title: 'ZIP', data: 'zip' },
-                        { title: 'State', data: 'selectedState' },
-                        { title: 'Start Date', data: 'startDate' },
-                        { title: 'Department', data: 'selectedDepartment' },
-                    ]}
-                    options={{
-            responsive: true,
-            columnDefs: [{ targets: 0, responsivePriority: 1 }]
-          }}
+                <Table 
+                    data={tableData}
+                    columns={columns}
+                    className='table'
                 />
             </div>
         </div>

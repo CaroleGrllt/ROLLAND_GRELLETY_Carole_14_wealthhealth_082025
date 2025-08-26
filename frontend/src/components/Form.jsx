@@ -12,10 +12,7 @@ import { addEmployee } from "../redux/actions/employee.action";
 import Button from "./Button"
 import Selector from "./Select"
 import DateSelector from './DatePicker'
-
-// PACKAGES NPMJS - Modal (Select and datepicker in other files)
-import { Modal } from '@carole-rg/hr-modal-react';
-import '@carole-rg/hr-modal-react/styles.css';
+import Modale from "./Modal";
 
 // ICONS
 import { faUserPlus } from "@fortawesome/free-solid-svg-icons";
@@ -248,8 +245,8 @@ export default function Form() {
                 <Button type="submit" logo={faUserPlus} text={"Create employee"} />
                 {errorMessage && <p className="error-message">{errorMessage}</p>}
             </form>
-            <Modal
-                isOpen={open}
+            <Modale
+                open={open}
                 onClose={() => setOpen(false)}
                 message="new employee registered"
                 closeBtn="Back to form"
