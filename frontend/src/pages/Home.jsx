@@ -6,7 +6,7 @@ export default function Home() {
         <div className="home-container">
             <div className="home-logo-container">
                 <img 
-                    src="/logo-256.webp"
+                    src={`${import.meta.env.BASE_URL}logo-256.webp`}
                     alt="Wealth Health"
                 />        
             </div>

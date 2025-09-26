@@ -5,7 +5,6 @@ import DefaultLayout from './layouts/DefaultLayout';
 import Home from './pages/Home';
 import New from './pages/New';
 import List from './pages/List';
-import ErrorPage from './pages/Error';
 
 
 export default function App() {
@@ -38,7 +37,7 @@ export default function App() {
       path: '*',
       element: (
         <HomeLayout>
-          <ErrorPage />
+          <Home />
         </HomeLayout>
       ),
     },
