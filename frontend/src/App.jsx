@@ -42,7 +42,10 @@ export default function App() {
         </HomeLayout>
       ),
     },
-  ]);
+  ],
+  {
+  basename: '/ROLLAND_GRELLETY_Carole_14_wealthhealth_082025',
+  });
 
   return (
       <RouterProvider router={router} />
